@@ -1,11 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Poppins"],
+        chakra: ["Chakra Petch, serif"],
+      },
+      colors: {
+        primary: '#41004C', // Example: Blue
+        grayy: '#CFCFCF',
+        
+        // Add more custom colors as needed
+      },
+    },
   },
   plugins: [],
 }
-

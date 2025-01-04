@@ -1,3 +1,276 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body{
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.flexCol{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input-container {
+    display: flex;
+  }
+  
+  ::placeholder {
+    @apply text-[18px];
+    color: #757575;
+    opacity: 1;
+    font-weight: 300;
+
+  }
+  
+  .search-input {
+    color: #212121;
+    vertical-align: middle;
+    line-height: 2;
+    padding: 5px 0 5px 20px;
+    border-left:  1px solid #CFCFCF;
+    border-bottom:  1px solid #CFCFCF;
+    border-top:  1px solid #CFCFCF;
+    background-color: white;
+    border-radius: 0;
+  }
+  
+  .search-submit {
+    color: #41004C;
+    vertical-align: middle;
+    padding: 5px 20px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    border-right:  1px solid #CFCFCF;
+    border-bottom:  1px solid #CFCFCF;
+    border-top:  1px solid #CFCFCF;
+  }
+  .gradient-btn{
+    background: linear-gradient(90deg, #41004C 0%, #15002A 100%);
+  }
+
+ 
+
+/* Category bar */
+
+
+  nav .wrapper{
+    position: relative;
+    max-width: 1300px;
+    height: 70px;
+    line-height: 70px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .wrapper .nav-links{
+    display: inline-flex;
+    gap: 2em;
+
+  }
+  .nav-links li{
+    list-style: none;
+
+  }
+  .nav-links li a{
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+  .nav-links li a:hover{
+    color: #75008a;
+  }
+  .nav-links .mobile-item{
+    display: none;
+  }
+  .nav-links .drop-menu{
+    position: absolute;
+    width: 180px;
+    line-height: 45px;
+    top: 85px;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+  }
+.nav-links li:hover .drop-menu,
+.nav-links li:hover .mega-box {
+  transition: all 0.3s ease;
+  top: 70px;
+  opacity: 1;
+  visibility: visible;
+}
+
+  .mega-box{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 0 30px;
+    top: 85px;
+    opacity: 0;
+  visibility: hidden;
+  }
+  .mega-box .content{
+    padding: 25px 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+  }
+
+  .wrapper .btn{
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+  }
+  .wrapper .btn.close-btn{
+    position: absolute;
+    right: 30px;
+    top: 10px;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .wrapper .btn{
+      display: block;
+    }
+    .wrapper .nav-links{
+      position: fixed;
+      height: 100vh;
+      width: 100vw;
+      top: 0;
+      left: -100%;
+      background: white;
+      display: block;
+      padding: 50px 5vw;
+      line-height: 50px;
+      overflow-y: auto;
+      box-shadow: 0px 15px 15px rgba(0,0,0,0.18);
+      transition: all 0.3s ease;
+      z-index: 6;
+    }
+    #menu-btn:checked ~ .nav-links{
+      left: 0%;
+    }
+    #menu-btn:checked ~ .btn.menu-btn{
+      display: none;
+    }
+    #close-btn:checked ~ .btn.menu-btn{
+      display: block;
+    }
+    .nav-links li{
+      margin: 15px 10px;
+    }
+    .nav-links li a{
+      display: block;
+      font-size: 20px;
+    }
+    .nav-links .drop-menu{
+      position: static;
+      opacity: 1;
+      top: 65px;
+      visibility: visible;
+      padding-left: 20px;
+      width: 100%;
+      max-height: 0px;
+      overflow: hidden;
+      box-shadow: none;
+      transition: all 0.3s ease;
+    }
+    #showDrop:checked ~ .drop-menu,
+    #showMega:checked ~ .mega-box{
+      max-height: 100%;
+    }
+    .nav-links .desktop-item{
+      display: none;
+    }
+    .nav-links .mobile-item{
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .nav-links .mobile-item:hover{
+      font-weight: 600;
+    }
+    .drop-menu li{
+      margin: 0;
+    }
+    .drop-menu li a{
+      border-radius: 5px;
+      font-size: 18px;
+    }
+    .mega-box{
+      position: static;
+      top: 65px;
+      opacity: 1;
+      visibility: visible;
+      padding: 0 20px;
+      max-height: 0px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .mega-box .content{
+      box-shadow: none;
+      flex-direction: column;
+      padding: 20px 20px 0 20px;
+    }
+    .mega-box .content .row:nth-child(1),
+    .mega-box .content .row:nth-child(2){
+      border-top: 0px;
+    }
+    .content .row .mega-links{
+      border-left: 0px;
+      padding-left: 15px;
+    }
+    .row .mega-links li{
+      margin: 0;
+    }
+    .content .row header{
+      font-size: 19px;
+    }
+  }
+  nav input{
+    display: none;
+  }
+  
+
+
+
+
+
+  .logoutbtn{
+    background-color: #f0f0f0;
+    color: red;
+    transition: 0.2s ease-out;
+  }
+  .logoutbtn:hover{
+    background-color: red;
+    color: white;
+  }
+
+
+/* Hide the profile menu by default */
+.profileMenu {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  visibility: hidden;
+}
+
+/* Show the profile menu when the relative div is hovered */
+.relative:hover .profileMenu {
+  opacity: 1;
+  visibility: visible;
+
+}
+.profileList ul li a{
+  transition: 0.2s ease-out;
+  cursor: pointer;
+}
+.profileList ul li a:hover{
+  margin-left: 0.5em;
+}
