@@ -5,7 +5,13 @@ body{
   width: 100vw;
   overflow-x: hidden;
 }
+h3{
+  @apply text-[20px] md:text-[22px] lg:text-[28px] font-medium;
+}
 
+h2{
+  @apply text-[22px] sm:text-[24px] md:text-[26px] lg:text-[30px];
+}
 .flexCol{
     display: flex;
     flex-direction: column;
@@ -51,7 +57,11 @@ body{
     background: linear-gradient(90deg, #41004C 0%, #15002A 100%);
   }
 
- 
+ #header{
+  position: sticky;
+  background-color: white;
+  z-index: 2;
+ }
 
 /* Category bar */
 
@@ -150,7 +160,7 @@ body{
       overflow-y: auto;
       box-shadow: 0px 15px 15px rgba(0,0,0,0.18);
       transition: all 0.3s ease;
-      z-index: 6;
+      z-index: 8;
     }
     #menu-btn:checked ~ .nav-links{
       left: 0%;
@@ -257,7 +267,7 @@ body{
 /* Hide the profile menu by default */
 .profileMenu {
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.2s ease-in;
   visibility: hidden;
 }
 
@@ -273,4 +283,83 @@ body{
 }
 .profileList ul li a:hover{
   margin-left: 0.5em;
+}
+
+
+
+
+.login-flex{
+  background-image: url(/public/image.png);
+  background-size: cover;
+  
+}
+/* Login Page */
+.LoginPage{
+  @apply px-[7vw] lg:px-[10vw] py-[10vh] md:py-[15vh] md:min-h-screen;
+
+}
+
+
+.signupform label, .signupform input{
+  @apply text-[16px] md:text-[18px] lg:text-[20px] my-[0.8em];
+}
+.signupform input[type=text], input[type=email], input[type=password]{
+  @apply border-[#CFCFCF] border-[1px] py-[0.5em] w-full px-[1em];
+}
+.signupform input[type=text]:focus, input[type=email]:focus, input[type=password]:focus{
+  @apply outline-none border-[#75008a] border-[2px];
+}
+.solidBtn{
+  @apply bg-primary text-white py-[0.3em] px-[1em] text-[18px] md:text-[20px] lg:text-[22px] border-[2px] border-[#41004C];
+}
+.notSolidBtn{
+  @apply text-[#41004C] py-[0.3em] px-[1em] text-[18px] md:text-[20px] lg:text-[22px] border-[2px] border-[#41004C];
+}
+
+.loginform label, .loginform input{
+  @apply text-[16px] md:text-[18px] lg:text-[20px] my-[0.8em] text-white;
+}
+.loginform input[type=email], input[type=password]{
+  @apply border-[#CFCFCF] border-[1px] py-[0.5em] w-full px-[1em] bg-white bg-opacity-0;
+}
+.loginform input[type=email]:focus, input[type=password]:focus{
+  @apply outline-none border-[2px] border-[#fff];
+}
+
+.tb-container img {
+  width: 200px;
+  height: auto;
+  display: none;
+  margin-bottom: 30px;
+}
+.tb-container input {
+  display: none;
+}
+.tb-container label {
+
+  cursor: pointer;
+  align-items: center;
+  margin:0 auto;
+}
+
+/* Add these styles to your CSS file */
+.stepdiv {
+  transition: 0.5s ease-in-out;
+}
+
+.step-enter {
+  opacity: 0;
+}
+
+.step-enter-active {
+  opacity: 1;
+}
+
+.step-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.step-exit-active {
+  opacity: 0;
 }

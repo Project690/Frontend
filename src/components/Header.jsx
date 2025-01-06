@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <div className='header top-0 left-0 right-0 py-[15px] md:py-[20px] px-[7%] sm:px-[5%] flex justify-between border-b-[1px] border-grayy'>
+    <div id="header" className='header top-0 left-0 right-0 py-[15px] md:py-[20px] px-[7%] sm:px-[5%] flex justify-between border-b-[1px] border-grayy'>
         <div className='flexCol'>
         <p className='uppercase font-chakra text-[32px] font-bold text-primary'>logo</p>
 
