@@ -13,6 +13,7 @@ const Signup = () => {
 
   const handleNext = () => setStep(step + 1);
   const handlePrev = () => setStep(step - 1);
+  // Updates the formData state whenever the user types in any input field. It dynamically updates the corresponding field based on the name attribute of the input.
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -37,7 +38,7 @@ const Signup = () => {
   };
   
   
-
+// handleSubmit: Prevents the default form submission behavior and logs the formData to the console. In a real-world scenario, this would send the data to a backend server.
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form Data Submitted:', formData);

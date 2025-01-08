@@ -3,10 +3,12 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 
+
+// A configuration object (questionsConfig) defines the questions for each category (e.g., Books, Dorms, Clothing). Each category has an array of questions with properties like key, label, type, and conditional logic for dynamic rendering.
 const questionsConfig = {
   Books: [
     { key: "course", label: "Course", type: "text", important: true },
-    { key: "title", label: "Title", type: "text", important: true },
+    { key: "booktitle", label: "Books's Title", type: "text", important: true },
     { key: "isbn", label: "ISBN", type: "text" },
     
   ],
@@ -60,6 +62,7 @@ const questionsConfig = {
     { key: "modelYear", label: "Model Year", type: "text", conditional: (answers) => answers.itemType !== "Accessories" },
   ],
   Common: [
+    { key: "title", label: "Title of the Ad", type: "text", important: true, },
     { key: "description", label: "Additional Description", type: "textarea" }, // Added this!
     { key: "monthBought", label: "Month Bought", type: "month",important: true, },
     { key: "condition", label: "Condition", type: "dropdown", options: ["New", "Good", "Fair", "Poor"], important: true, },
@@ -69,9 +72,13 @@ const questionsConfig = {
 };
 
 const PostPage = () => {
+  //State variables are initialized to manage the selected category, user answers, and the current question index.
   const [category, setCategory] = useState("");
   const [answers, setAnswers] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+
+// Updates the selected category and resets the answers and question index when the category changes.
 
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
@@ -79,6 +86,8 @@ const PostPage = () => {
     setCurrentQuestionIndex(0);
   };
 
+
+//  Updates the answers state when the user inputs or selects a value for a question
   const handleAnswerChange = (key, value) => {
     setAnswers((prev) => ({ ...prev, [key]: value }));
   };
@@ -98,7 +107,10 @@ const PostPage = () => {
       }));
     }
   };
-  
+
+
+   //Filters questions based on the selected category and conditional logic, appending common questions to the list.
+
   const getQuestions = () => {
     if (!category) return [];
     const baseQuestions = questionsConfig[category];
@@ -108,6 +120,8 @@ const PostPage = () => {
     return [...filteredQuestions, ...questionsConfig.Common];
   };
 
+
+  // Dynamically renders the current question based on its type (text, dropdown, file, month, textarea). Handles file upload previews and conditional rendering.
   const renderCurrentQuestion = () => {
     const questions = getQuestions();
     const currentQuestion = questions[currentQuestionIndex];
@@ -206,6 +220,7 @@ Select Image
     );
   };
 
+  // Navigates to the previous question, handling edge cases like returning to the category selection or skipping invalid questions.
   const goToPreviousQuestion = () => {
     if (currentQuestionIndex === 0) {
       return; // Already at the first question, nothing to go back to.
@@ -246,7 +261,7 @@ Select Image
       <h2 className="font-semibold pb-[1em]">Post an Item</h2>
       {!category && (
         <div className="form-group">
-          <label>Category</label>
+          <label>Select a Category</label>
           <select value={category} onChange={handleCategoryChange} className="minimal">
             <option value="">Select a category</option>
             {Object.keys(questionsConfig).filter(cat => cat !== "Common").map((cat) => (
