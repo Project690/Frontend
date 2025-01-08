@@ -379,7 +379,7 @@ h2{
 .post-page{
   @apply w-4/5 md:w-3/5 mx-auto;
 }
-.post-page label, .post-page input, .post-page textarea, .post-page select{
+ .post-page input, .post-page textarea, .post-page select{
   @apply text-[16px] md:text-[18px] lg:text-[20px];
 }
 .post-page input[type=text], .post-page input[type=month], .post-page input[type=password], .post-page textarea, .post-page select{
@@ -421,6 +421,4 @@ select.minimal {
   cursor: not-allowed; /* Change cursor to indicate the button is disabled */
   border: 2px solid #d0d0d0;
 }
-.post-page label{
 
-}
