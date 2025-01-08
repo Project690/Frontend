@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 body{
   width: 100vw;
   overflow-x: hidden;
@@ -10,7 +11,7 @@ h3{
 }
 
 h2{
-  @apply text-[22px] sm:text-[24px] md:text-[26px] lg:text-[30px];
+  @apply text-[24px] sm:text-[26px] md:text-[30px] lg:text-[36px];
 }
 .flexCol{
     display: flex;
@@ -66,9 +67,8 @@ h2{
 /* Category bar */
 
 
-  nav .wrapper{
+ .wrapper{
     position: relative;
-    max-width: 1300px;
     height: 70px;
     line-height: 70px;
     margin: auto;
@@ -244,10 +244,12 @@ h2{
       font-size: 19px;
     }
   }
-  nav input{
+  .wrapper input[type=radio],.wrapper input[type=checkbox]{
     display: none;
   }
-  
+  input[type=search]:focus{
+    outline: none;
+  }
 
 
 
@@ -342,6 +344,16 @@ h2{
   margin:0 auto;
 }
 
+.tb-containerr input {
+  display: none;
+}
+.tb-containerr label {
+
+  cursor: pointer;
+  align-items: center;
+  margin:0 auto;
+}
+
 /* Add these styles to your CSS file */
 .stepdiv {
   transition: 0.5s ease-in-out;
@@ -362,4 +374,53 @@ h2{
 
 .step-exit-active {
   opacity: 0;
+}
+
+.post-page{
+  @apply w-4/5 md:w-3/5 mx-auto;
+}
+.post-page label, .post-page input, .post-page textarea, .post-page select{
+  @apply text-[16px] md:text-[18px] lg:text-[20px];
+}
+.post-page input[type=text], .post-page input[type=month], .post-page input[type=password], .post-page textarea, .post-page select{
+  @apply border-[#CFCFCF] border-[1px] py-[0.5em] w-full px-[1em] my-[1em] bg-[#fff];
+}
+.post-page input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, select:focus{
+  @apply outline-none border-[#75008a] border-[2px];
+}
+
+
+select.minimal {
+  
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%), 
+                    linear-gradient(135deg, gray 50%, transparent 50%), 
+                    linear-gradient(to right, #ccc, #ccc);
+  background-position: calc(100% - 23px) calc(1em + 2px), 
+                      calc(100% - 16px) calc(1em + 2px),
+                      calc(100% - 2.5em) 0.5em;
+  background-size: 7px 7px, 7px 7px, 1px 1.5em;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+
+
+
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.post-page button:disabled{
+  background-color: #d0d0d0; /* Gray background */
+  color: #fff; /* Darker gray text */
+  cursor: not-allowed; /* Change cursor to indicate the button is disabled */
+  border: 2px solid #d0d0d0;
+}
+.post-page label{
+
 }

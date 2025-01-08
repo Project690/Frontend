@@ -1,0 +1,349 @@
+
+
+import React, { useState } from "react";
+import Header from "../components/Header";
+
+const questionsConfig = {
+  Books: [
+    { key: "course", label: "Course", type: "text", important: true },
+    { key: "title", label: "Title", type: "text", important: true },
+    { key: "isbn", label: "ISBN", type: "text" },
+    
+  ],
+  Dorms: [
+    {
+      key: "itemType",
+      label: "Item Type",
+      type: "dropdown",
+      options: ["Microwave", "Fridge", "Decor"],
+      important: true,
+    },
+    // Conditional logic for "Decor" only showing dropdown
+    { key: "brand", label: "Brand", type: "text", conditional: (answers) => answers.itemType !== "Decor" },
+    { key: "size", label: "Size", type: "text", conditional: (answers) => answers.itemType !== "Decor" },
+    { key: "color", label: "Color", type: "text", conditional: (answers) => answers.itemType !== "Decor" },
+  ],
+  Clothing: [
+    { key: "gender", label: "Gender", type: "dropdown", options: ["Men", "Women", "Unisex"], important: true,},
+    {
+      key: "type",
+      label: "Type",
+      type: "dropdown",
+      options: ["Shirt", "Trousers", "Shoes"],
+      important: true,
+
+    },
+    { key: "brand", label: "Brand", type: "text" },
+    { key: "size", label: "Size", type: "text", important: true,},
+    { key: "color", label: "Color", type: "text", important: true, },
+  ],
+  Bikes: [
+    { key: "gender", label: "Gender", type: "dropdown", options: ["Men", "Women", "Unisex"] },
+    { key: "brand", label: "Brand", type: "text" },
+    { key: "size", label: "Size", type: "text" },
+    { key: "color", label: "Color", type: "text", important: true,},
+  ],
+  Electronics: [
+    {
+      key: "itemType",
+      label: "Item Type",
+      type: "dropdown",
+      options: ["Phone", "Laptops", "Accessories"],
+      important: true,
+    },
+    // Conditional logic for "Accessories" showing only type dropdown and brand
+    { key: "type", label: "Type", type: "dropdown", options: ["Cables", "Chargers", "Covers"], conditional: (answers) => answers.itemType === "Accessories" },
+    { key: "brand", label: "Brand", type: "text", conditional: (answers) => answers.itemType !== "Decor" },
+    { key: "color", label: "Color", type: "text", conditional: (answers) => answers.itemType !== "Accessories" },
+    { key: "size", label: "Size", type: "text", conditional: (answers) => answers.itemType !== "Accessories" },
+    { key: "storage", label: "Storage", type: "text", conditional: (answers) => answers.itemType !== "Accessories" },
+    { key: "modelYear", label: "Model Year", type: "text", conditional: (answers) => answers.itemType !== "Accessories" },
+  ],
+  Common: [
+    { key: "description", label: "Additional Description", type: "textarea" }, // Added this!
+    { key: "monthBought", label: "Month Bought", type: "month",important: true, },
+    { key: "condition", label: "Condition", type: "dropdown", options: ["New", "Good", "Fair", "Poor"], important: true, },
+    { key: "price", label: "Price", type: "text", important: true, },
+    { key: "pictures", label: "Pictures", type: "file", important: true, },
+  ],
+};
+
+const PostPage = () => {
+  const [category, setCategory] = useState("");
+  const [answers, setAnswers] = useState({});
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+    setAnswers({});
+    setCurrentQuestionIndex(0);
+  };
+
+  const handleAnswerChange = (key, value) => {
+    setAnswers((prev) => ({ ...prev, [key]: value }));
+  };
+  
+  const fileUpload = (event) => {
+    const files = event.target.files;
+    const filesLength = files.length;
+  
+    if (filesLength > 0) {
+      const uploadedFiles = Array.from(files).slice(0, 4); // Limit to 4 files
+      const imagePreviews = uploadedFiles.map(file => URL.createObjectURL(file));
+  
+      setAnswers((prevState) => ({
+        ...prevState,
+        pictures: [...(prevState.pictures || []), ...uploadedFiles], // Store file objects
+        picturePreviews: [...(prevState.picturePreviews || []), ...imagePreviews], // Store preview URLs
+      }));
+    }
+  };
+  
+  const getQuestions = () => {
+    if (!category) return [];
+    const baseQuestions = questionsConfig[category];
+    const filteredQuestions = baseQuestions.filter(
+      (question) => !question.conditional || question.conditional(answers)
+    );
+    return [...filteredQuestions, ...questionsConfig.Common];
+  };
+
+  const renderCurrentQuestion = () => {
+    const questions = getQuestions();
+    const currentQuestion = questions[currentQuestionIndex];
+
+    if (!currentQuestion) return null;
+
+    return (
+      <div className="form-group">
+        <label className="">{currentQuestion.label}{currentQuestion.important && ( <span className="ml-[0.5em] text-[0.8em] text-[red]">(Important)</span>)}</label>
+        {currentQuestion.type === "text" && (
+          <input
+            type="text"
+            value={answers[currentQuestion.key] || ""}
+            onChange={(e) => handleAnswerChange(currentQuestion.key, e.target.value)}
+          />
+        )}
+        {currentQuestion.type === "dropdown" && (
+          <select className="minimal"
+            value={answers[currentQuestion.key] || ""}
+            onChange={(e) => handleAnswerChange(currentQuestion.key, e.target.value)}
+          >
+            <option value="">Select</option>
+            {currentQuestion.options.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        )}
+        {currentQuestion.type === "file" && (
+
+<div className=''>
+<div className="tb-containerr w-full mx-auto border-[2px] border-[black] text-[black] text-[20px] py-[40px] rounded-[8px] mt-[1em]">
+<div className="tb-img-vieww w-full flex flex-wrap gap-[0.5vw] mb-[30px] justify-center px-[10vw] md:px-[5vw]">
+{answers.picturePreviews?.map((preview, index) => (
+  <div key={index} className="relative">
+    <img src={preview} alt={`Uploaded ${index + 1}`} className="w-[25vw] md:w-[12vw] object-cover border-[1px] border-grayy" />
+    <button 
+      onClick={() => {
+        const updatedPreviews = [...answers.picturePreviews];
+        const updatedFiles = [...answers.pictures];
+        updatedPreviews.splice(index, 1);
+        updatedFiles.splice(index, 1);
+        setAnswers((prevState) => ({
+          ...prevState,
+          pictures: updatedFiles,
+          picturePreviews: updatedPreviews,
+        }));
+      }}
+      className="absolute top-[10px] right-[10px] bg-red-500 text-white rounded-full w-[20px] h-[20px] flex items-center justify-center leading-[1em]"
+    >
+      <svg fill="#fff" className="h-[10px]" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 460.775 460.775" xmlSspace="preserve"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M285.08,230.397L456.218,59.27c6.076-6.077,6.076-15.911,0-21.986L423.511,4.565c-2.913-2.911-6.866-4.55-10.992-4.55 c-4.127,0-8.08,1.639-10.993,4.55l-171.138,171.14L59.25,4.565c-2.913-2.911-6.866-4.55-10.993-4.55 c-4.126,0-8.08,1.639-10.992,4.55L4.558,37.284c-6.077,6.075-6.077,15.909,0,21.986l171.138,171.128L4.575,401.505 c-6.074,6.077-6.074,15.911,0,21.986l32.709,32.719c2.911,2.911,6.865,4.55,10.992,4.55c4.127,0,8.08-1.639,10.994-4.55 l171.117-171.12l171.118,171.12c2.913,2.911,6.866,4.55,10.993,4.55c4.128,0,8.081-1.639,10.992-4.55l32.709-32.719 c6.074-6.075,6.074-15.909,0-21.986L285.08,230.397z"></path> </g></svg>
+    </button>
+  </div>
+))}
+      </div>
+<label htmlFor="tb-file-upload" className='flexCol mx-auto text-center items-center'>
+<svg className='w-[2.5em] ' viewBox="0 0 29 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27.6706 25.4118C27.6706 29.4608 24.3784 32.753 20.3294 32.753C16.2805 32.753 12.9883 29.4608 12.9883 25.4118C12.9883 21.3629 16.2805 18.0707 20.3294 18.0707C24.3784 18.0707 27.6706 21.3629 27.6706 25.4118Z" fill="white"/>
+<path d="M24.283 24.8471H20.8948V21.4588C20.8948 21.1472 20.6418 20.8942 20.3301 20.8942C20.0184 20.8942 19.7654 21.1472 19.7654 21.4588V24.8471H16.3772C16.0655 24.8471 15.8125 25.1001 15.8125 25.4118C15.8125 25.7235 16.0655 25.9765 16.3772 25.9765H19.7654V29.3647C19.7654 29.6764 20.0184 29.9294 20.3301 29.9294C20.6418 29.9294 20.8948 29.6764 20.8948 29.3647V25.9765H24.283C24.5947 25.9765 24.8477 25.7235 24.8477 25.4118C24.8477 25.1001 24.5948 24.8471 24.283 24.8471Z" fill="black"/>
+<path d="M28.1512 22.1647C27.2363 19.9623 25.4123 18.2287 23.1535 17.4268C22.2726 17.1106 21.3239 16.9412 20.33 16.9412C16.8118 16.9412 13.7907 19.0983 12.5088 22.159C12.0909 23.1586 11.8594 24.2598 11.8594 25.4118C11.8594 25.5247 11.8594 25.6376 11.865 25.7506C11.9553 28.0659 12.9887 30.1497 14.5812 31.6235C16.0947 33.0297 18.1107 33.8824 20.33 33.8824C24.8871 33.8824 28.6142 30.2683 28.7892 25.7562C28.8006 25.6432 28.8006 25.5247 28.8006 25.4118C28.8006 24.2598 28.569 23.1642 28.1512 22.1647ZM26.7846 28.9073C25.5422 31.1943 23.1139 32.7529 20.33 32.7529C17.5403 32.7529 15.1121 31.1943 13.8698 28.8959C13.3107 27.8569 12.9888 26.671 12.9888 25.4117V25.327C13.034 21.3175 16.3093 18.0705 20.33 18.0705C21.3295 18.0705 22.2838 18.2738 23.1535 18.6352C25.7794 19.7308 27.6373 22.3115 27.6655 25.327C27.6711 25.3552 27.6711 25.3834 27.6711 25.4117C27.6711 26.671 27.3492 27.8625 26.7902 28.9016C26.7846 28.9073 26.7846 28.9073 26.7846 28.9073Z" fill="black"/>
+<path d="M12.9882 31.6236C12.9882 31.9342 12.7341 32.1883 12.4235 32.1883H0.564684C0.254118 32.1883 0 31.9342 0 31.6236V27.1059C0 26.7954 0.254118 26.5413 0.564684 26.5413C0.87525 26.5413 1.12937 26.7954 1.12937 27.1059V31.0589H12.4235C12.7341 31.0589 12.9882 31.313 12.9882 31.6236Z" fill="black"/>
+<path d="M1.12937 24.847C1.12937 25.1576 0.880876 25.4117 0.570309 25.4117H0.564684C0.254118 25.4117 0 25.1576 0 24.847C0 24.5365 0.254118 24.2823 0.564684 24.2823C0.87525 24.2823 1.12937 24.5364 1.12937 24.847Z" fill="black"/>
+<path d="M23.5539 9.19906L14.5186 0.163787C14.4113 0.0621397 14.2701 0 14.1176 0H0.564684C0.254118 0 0 0.254118 0 0.564684V22.5882C0 22.8988 0.254118 23.1529 0.564684 23.1529C0.87525 23.1529 1.12937 22.8988 1.12937 22.5882V1.12943H13.5529V9.60003C13.5529 9.91059 13.8071 10.1647 14.1176 10.1647H22.5882V15.2471C22.5882 15.5576 22.8423 15.8118 23.1529 15.8118C23.3731 15.8118 23.5651 15.6875 23.6555 15.5012C23.695 15.4221 23.7177 15.3374 23.7177 15.2471V9.60003C23.7177 9.44756 23.6555 9.30634 23.5539 9.19906ZM14.6824 9.03528V1.92567L21.7921 9.03534L14.6824 9.03528Z" fill="black"/>
+<path d="M19.7646 10.1647V9.59998" stroke="#231F20" strokeWidth="2" strokeMiterlimit="10"/>
+</svg>
+
+Select Image
+</label>
+<input 
+        type="file" 
+        id="tb-file-upload" 
+        accept="image/*" 
+        onChange={(e) => fileUpload(e)} 
+        multiple 
+        disabled={answers.pictures?.length >= 4} // Disable if 4 pictures are uploaded
+      />
+</div>
+</div>
+        )}
+        {currentQuestion.type === "month" && (
+          <input
+            type="month"
+            value={answers[currentQuestion.key] || ""}
+            onChange={(e) => handleAnswerChange(currentQuestion.key, e.target.value)}
+          />
+        )}
+        {currentQuestion.type === "textarea" && (
+          <textarea
+            rows="4"
+            value={answers[currentQuestion.key] || ""}
+            onChange={(e) => handleAnswerChange(currentQuestion.key, e.target.value)}
+          />
+        )}
+      </div>
+    );
+  };
+
+  const goToPreviousQuestion = () => {
+    if (currentQuestionIndex === 0) {
+      return; // Already at the first question, nothing to go back to.
+    }
+
+    const questions = getQuestions();
+
+    // Decrement the index and handle dynamic steps like returning to category
+    let newIndex = currentQuestionIndex - 1;
+
+    // Handle going back to category selection
+    if (newIndex < 0 || (questions.length === 0 && category)) {
+      setCategory("");
+      setCurrentQuestionIndex(0);
+      return;
+    }
+
+    // Find a valid question that passes any conditional logic
+    while (newIndex > 0 && questions[newIndex].conditional && !questions[newIndex].conditional(answers)) {
+      newIndex--;
+    }
+
+    setCurrentQuestionIndex(newIndex);
+  };
+
+  const handleSubmit = () => {
+    console.log("Submitted Data:", { category, ...answers, pictures: answers.pictures });
+    alert("Form Submitted!");
+  };
+
+  const questions = getQuestions();
+
+  return (
+    <>
+        <Header/>
+
+    <div className="post-page py-[10vh]">
+      <h2 className="font-semibold pb-[1em]">Post an Item</h2>
+      {!category && (
+        <div className="form-group">
+          <label>Category</label>
+          <select value={category} onChange={handleCategoryChange} className="minimal">
+            <option value="">Select a category</option>
+            {Object.keys(questionsConfig).filter(cat => cat !== "Common").map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      {category && currentQuestionIndex < questions.length && (
+        <>
+          {renderCurrentQuestion()}
+          <div className="button-group flex gap-[1em] justify-end mt-[1em]">
+            <button
+              onClick={goToPreviousQuestion}
+              className="notSolidBtn"
+              disabled={currentQuestionIndex === 0}
+            >
+              Previous
+            </button>
+            <button
+              onClick={() => setCurrentQuestionIndex((prev) => prev + 1)}
+              disabled={
+                questions[currentQuestionIndex]?.important && 
+                !answers[questions[currentQuestionIndex]?.key]
+              }
+  className="solidBtn"
+>
+  Next
+</button>
+          </div>
+        </>
+      )}
+
+{category && currentQuestionIndex >= questions.length && (
+  <div className="form-review">
+    <h3 className="pb-[1em]">Review</h3>
+    {questions.map((question, index) => (
+      <div key={index} className="form-group">
+        <label className="mt-[0.5em]">{question.label}</label>
+        {question.type === "text" && (
+          <input
+            type="text"
+            value={answers[question.key] || ""}
+            readOnly
+          />
+        )}
+        {question.type === "dropdown" && (
+          <select className="minimal" value={answers[question.key] || ""} disabled>
+            <option value="">Select</option>
+            {question.options.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        )}
+        {question.type === "file" && (
+          <div className="tb-containerr w-full mx-auto border-[2px] border-[black] text-[black] text-[20px] py-[40px] rounded-[8px] mt-[1em]">
+            <div className="tb-img-vieww w-full flex flex-wrap gap-[0.5vw] mb-[30px] justify-center px-[10vw] md:px-[5vw]">
+              {answers.picturePreviews?.map((preview, index) => (
+                <div key={index} className="relative">
+                  <img src={preview} alt={`Uploaded ${index + 1}`} className="w-[25vw] md:w-[12vw] object-cover border-[1px] border-grayy" />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        {question.type === "month" && (
+          <input
+            type="month"
+            value={answers[question.key] || ""}
+            readOnly
+          />
+        )}
+        {question.type === "textarea" && (
+          <textarea
+            rows="4"
+            value={answers[question.key] || ""}
+            readOnly
+          />
+        )}
+      </div>
+    ))}
+    <div className="button-group flex gap-[1em] justify-end mt-[2em]">
+      <button onClick={goToPreviousQuestion} className="notSolidBtn">
+        Previous
+      </button>
+      <button onClick={handleSubmit} className="solidBtn">Submit</button>
+    </div>
+  </div>
+)}
+    </div>
+    </>
+  );
+};
+
+export default PostPage;

@@ -2,7 +2,7 @@ import React from 'react'
 
 const CategoryBar = () => {
   return (
-      <nav className='px-[7%] sm:px-[5%] border-b-[1px] border-grayy'>
+      <div className='px-[7%] sm:px-[5%] border-b-[1px] border-grayy'>
         <div class="wrapper">
     <input type="radio" name="slider" id="menu-btn" />
     <input type="radio" name="slider" id="close-btn" />
@@ -103,7 +103,7 @@ const CategoryBar = () => {
   </div>
 </form>
   </div>
-</nav>
+</div>
 
 
   )

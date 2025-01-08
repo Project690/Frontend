@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const Header = () => {
   return (
-    <div id="header" className='header top-0 left-0 right-0 py-[15px] md:py-[20px] px-[7%] sm:px-[5%] flex justify-between border-b-[1px] border-grayy'>
+    <nav id="header" className='header top-0 left-0 right-0 py-[15px] md:py-[20px] px-[7%] sm:px-[5%] flex justify-between border-b-[1px] border-grayy'>
         <div className='flexCol'>
         <p className='uppercase font-chakra text-[32px] font-bold text-primary'>logo</p>
 
@@ -19,7 +20,7 @@ const Header = () => {
 </form>
 </div>
 <div className='flexCol'>
-<a className='font-chakra text-[20px] relative text-white flex gradient-btn px-[1em] text-nowrap h-fit py-[4px] md:py-[7px]'><span className='flexCol'>Post</span></a>
+<Link to='/Post'><p className='font-chakra text-[20px] relative text-white flex gradient-btn px-[1em] text-nowrap h-fit py-[4px] md:py-[7px]'><span className='flexCol'>Post</span></p></Link>
 
 </div>
 
@@ -31,8 +32,8 @@ const Header = () => {
   <path d="M38.6865 18.6492C41.555 18.6492 44.3591 19.4998 46.7442 21.0934C49.1293 22.6871 50.9883 24.9522 52.0862 27.6023C53.184 30.2524 53.4713 33.1686 52.9118 35.982C52.3523 38.7955 50.9711 41.3798 48.9429 43.4083C46.9147 45.4368 44.3306 46.8183 41.5172 47.3781C38.7038 47.9379 35.7876 47.651 33.1374 46.5535C30.4871 45.456 28.2217 43.5973 26.6278 41.2124C25.0339 38.8275 24.183 36.0235 24.1826 33.155C24.187 29.3094 25.7164 25.6227 28.4354 22.9033C31.1544 20.1839 34.841 18.6541 38.6865 18.6492ZM38.6865 15C35.0963 15.0004 31.5868 16.0653 28.6018 18.0601C25.6168 20.0549 23.2904 22.8901 21.9166 26.2071C20.5429 29.524 20.1836 33.1739 20.8841 36.6951C21.5846 40.2163 23.3134 43.4507 25.8521 45.9893C28.3907 48.528 31.6252 50.2568 35.1464 50.9573C38.6675 51.6578 42.3174 51.2985 45.6344 49.9248C48.9513 48.5511 51.7865 46.2246 53.7813 43.2396C55.7762 40.2546 56.8411 36.7451 56.8414 33.155C56.8417 30.7707 56.3723 28.4098 55.46 26.2071C54.5477 24.0043 53.2104 22.0028 51.5245 20.3169C49.8387 18.631 47.8371 17.2938 45.6344 16.3815C43.4316 15.4692 41.0707 14.9998 38.6865 15Z" fill="white"/>
   <defs>
   <linearGradient id="paint0_linear_146_2" x1="37.5" y1="0" x2="37.5" y2="75" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#15002A"/>
-  <stop offset="0.8" stop-color="#41004C"/>
+  <stop stopColor="#15002A"/>
+  <stop offset="0.8" stopColor="#41004C"/>
   </linearGradient>
   </defs>
   </svg>
@@ -49,8 +50,8 @@ const Header = () => {
   <path d="M38.6865 18.6492C41.555 18.6492 44.3591 19.4998 46.7442 21.0934C49.1293 22.6871 50.9883 24.9522 52.0862 27.6023C53.184 30.2524 53.4713 33.1686 52.9118 35.982C52.3523 38.7955 50.9711 41.3798 48.9429 43.4083C46.9147 45.4368 44.3306 46.8183 41.5172 47.3781C38.7038 47.9379 35.7876 47.651 33.1374 46.5535C30.4871 45.456 28.2217 43.5973 26.6278 41.2124C25.0339 38.8275 24.183 36.0235 24.1826 33.155C24.187 29.3094 25.7164 25.6227 28.4354 22.9033C31.1544 20.1839 34.841 18.6541 38.6865 18.6492ZM38.6865 15C35.0963 15.0004 31.5868 16.0653 28.6018 18.0601C25.6168 20.0549 23.2904 22.8901 21.9166 26.2071C20.5429 29.524 20.1836 33.1739 20.8841 36.6951C21.5846 40.2163 23.3134 43.4507 25.8521 45.9893C28.3907 48.528 31.6252 50.2568 35.1464 50.9573C38.6675 51.6578 42.3174 51.2985 45.6344 49.9248C48.9513 48.5511 51.7865 46.2246 53.7813 43.2396C55.7762 40.2546 56.8411 36.7451 56.8414 33.155C56.8417 30.7707 56.3723 28.4098 55.46 26.2071C54.5477 24.0043 53.2104 22.0028 51.5245 20.3169C49.8387 18.631 47.8371 17.2938 45.6344 16.3815C43.4316 15.4692 41.0707 14.9998 38.6865 15Z" fill="white"/>
   <defs>
   <linearGradient id="paint0_linear_146_2" x1="37.5" y1="0" x2="37.5" y2="75" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#15002A"/>
-  <stop offset="0.8" stop-color="#41004C"/>
+  <stop stopColor="#15002A"/>
+  <stop offset="0.8" stopColor="#41004C"/>
   </linearGradient>
   </defs>
   </svg>
@@ -71,7 +72,7 @@ const Header = () => {
         </div>
 
       
-    </div>
+    </nav>
   )
 }
 
