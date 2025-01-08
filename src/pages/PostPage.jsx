@@ -69,7 +69,7 @@ const questionsConfig = {
     { key: "description", label: "Additional Description", moreText: "In case you're feeling chatty today", type: "textarea" },
     { key: "monthBought", label: "When did you buy this?", moreText: "", type: "month",important: true, },
     { key: "condition", label: "What is the Condition of this?", moreText: "", type: "dropdown", options: ["New", "Good", "Fair", "Poor"], important: true, },
-    { key: "price", label: "How Much?", moreText: "", type: "text", important: true, },
+    { key: "price", label: "How Much?", moreText: "", type: "number", important: true, },
     { key: "pictures", label: "Upload Pictures", moreText: "No selfies please!", type: "file", important: true, },
   ],
 };
@@ -133,7 +133,7 @@ const PostPage = () => {
 
     return (
       <div className="form-group">
-        <label className="text-[22px] md:text-[24px] lg:text-[26px]">{currentQuestion.label}{currentQuestion.important && ( <span className="ml-[0.5em] text-[0.8em] text-[red]">(Important)</span>)}</label>
+        <label className="text-[20px] md:text-[24px] lg:text-[26px] font-medium">{currentQuestion.label}{currentQuestion.important && ( <span className="ml-[0.3em] font-light text-[red]">*</span>)}</label>
         <p className="text-[16px] md:text-[18px] lg:text-[20px] text-[#6c3675] pt-[0.2em]">{currentQuestion.moreText}</p>
 
 
@@ -144,6 +144,27 @@ const PostPage = () => {
             onChange={(e) => handleAnswerChange(currentQuestion.key, e.target.value)}
           />
         )}
+        {currentQuestion.type === "number" && (
+        <div className="flex">
+          <input
+            type="number"
+            value={answers[currentQuestion.key] || ""}
+            onChange={(e) => handleAnswerChange(currentQuestion.key, e.target.value)}
+          />
+          {currentQuestion.key === "price" && (
+            <div className="flex items-center border-[#CFCFCF] border-[1px] px-[1em] w-fit my-[1em] bg-[#fff] text-[16px] md:text-[18px] lg:text-[20px] border-l-0">
+              <input
+                type="checkbox"
+                className=""
+                checked={answers["negotiable"] || false}
+                onChange={(e) => handleAnswerChange("negotiable", e.target.checked)}
+              />
+              <label className="ml-[0.5em] font-light text-[0.8em]">Flexible?</label>
+            </div>
+          )}
+        </div>
+      )}
+
         {currentQuestion.type === "dropdown" && (
           <select className="minimal"
             value={answers[currentQuestion.key] || ""}
@@ -157,6 +178,7 @@ const PostPage = () => {
             ))}
           </select>
         )}
+        
         {currentQuestion.type === "file" && (
 
 <div className=''>
@@ -263,11 +285,13 @@ Select Image
     <>
         <Header/>
 
-    <div className="post-page py-[10vh]">
-      <h2 className="font-semibold pb-[1em]">Post an Item</h2>
+    <div className="post-page py-[10vh] ">
+    <h2 className="font-semibold pb-[1em] text-center">Post an Item</h2>
+
+    <div className="postForm px-[9vw] md:px-[7vw] py-[5vh] md:py-[10vh] rounded-[15px] md:rounded-[20px]">
       {!category && (
         <div className="form-group">
-          <label className="text-[22px] md:text-[24px] lg:text-[26px]">Select a Category</label>
+          <label className="text-[20px] font-medium md:text-[24px] lg:text-[26px]">Select a Category</label>
           <p className="text-[16px] md:text-[18px] lg:text-[20px] text-[#6c3675]">Please</p>
 
           <select value={category} onChange={handleCategoryChange} className="minimal">
@@ -306,19 +330,46 @@ Select Image
         </>
       )}
 
+
+{/* THis is to render the whole form before they submit it */}
 {category && currentQuestionIndex >= questions.length && (
   <div className="form-review">
     <h3 className="pb-[1em]">Review</h3>
     {questions.map((question, index) => (
       <div key={index} className="form-group">
         <label className="mt-[0.5em]">{question.label}</label>
-        {question.type === "text" && (
+        
+        {/* Render text input for price */}
+        {question.key === "price" && (
+          <div className="flex">
+            <input
+              type="text"
+              value={answers[question.key] || ""}
+              readOnly
+            />
+            {/* Render negotiable checkbox */}
+            {answers["negotiable"] && (
+              <div className="flex items-center border-[#CFCFCF] border-[1px] px-[1em] w-fit my-[1em] bg-[#fff] text-[16px] md:text-[18px] lg:text-[20px]">
+                <input
+                  type="checkbox"
+                  checked={answers["negotiable"] || false}
+                  readOnly
+                />
+                <label className="ml-[0.5em] font-light">Negotiable?</label>
+              </div>
+            )}
+          </div>
+        )}
+        
+        {/* Render other question types */}
+        {question.type === "text" && question.key !== "price" && (
           <input
             type="text"
             value={answers[question.key] || ""}
             readOnly
           />
         )}
+        
         {question.type === "dropdown" && (
           <select className="minimal" value={answers[question.key] || ""} disabled>
             <option value="">Select</option>
@@ -329,6 +380,7 @@ Select Image
             ))}
           </select>
         )}
+        
         {question.type === "file" && (
           <div className="tb-containerr w-full mx-auto border-[2px] border-[black] text-[black] text-[20px] py-[40px] rounded-[8px] mt-[1em]">
             <div className="tb-img-vieww w-full flex flex-wrap gap-[0.5vw] mb-[30px] justify-center px-[10vw] md:px-[5vw]">
@@ -340,6 +392,7 @@ Select Image
             </div>
           </div>
         )}
+        
         {question.type === "month" && (
           <input
             type="month"
@@ -347,6 +400,7 @@ Select Image
             readOnly
           />
         )}
+        
         {question.type === "textarea" && (
           <textarea
             rows="4"
@@ -358,12 +412,13 @@ Select Image
     ))}
     <div className="button-group flex gap-[1em] justify-end mt-[2em]">
       <button onClick={goToPreviousQuestion} className="notSolidBtn">
-        Previous
+        Wanna go back?
       </button>
-      <button onClick={handleSubmit} className="solidBtn">Submit</button>
+      <button onClick={handleSubmit} className="solidBtn">Looks Good</button>
     </div>
   </div>
 )}
+    </div>
     </div>
     </>
   );
