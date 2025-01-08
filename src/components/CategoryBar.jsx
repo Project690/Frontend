@@ -3,20 +3,20 @@ import React from 'react'
 const CategoryBar = () => {
   return (
       <div className='px-[7%] sm:px-[5%] border-b-[1px] border-grayy'>
-        <div class="wrapper">
+        <div className="wrapper">
     <input type="radio" name="slider" id="menu-btn" />
     <input type="radio" name="slider" id="close-btn" />
-    <ul class="nav-links">
-      <label for="close-btn" class="btn close-btn"><svg className='w-[40px] h-[40px]' viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16 8L8 16M8.00001 8L16 16" stroke="#41004C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></label>
+    <ul className="nav-links">
+      <label htmlFor="close-btn" className="btn close-btn"><svg className='w-[40px] h-[40px]' viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16 8L8 16M8.00001 8L16 16" stroke="#41004C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg></label>
       <li><a href="#">All Categories</a></li>
 
 
       <li>
-      <a href="#" class="desktop-item booksitem flex">Books <span className='flexCol ml-[0.3em]'><svg className='w-[0.8em]' viewBox="0 0 1024.00 1024.00" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)" stroke="#000000" stroke-width="0.01024"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="2.048"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"></path></g></svg></span></a>
+      <a href="#" className="desktop-item booksitem flex">Books <span className='flexCol ml-[0.3em]'><svg className='w-[0.8em]' viewBox="0 0 1024.00 1024.00" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)" stroke="#000000" strokeWidth="0.01024"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="2.048"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"></path></g></svg></span></a>
         <input type="checkbox" id="showMega"/>
-        <label for="showMega" class="mobile-item flex">Books <span className=' flexCol ml-[0.3em]'><svg className='w-[0.8em]' viewBox="0 0 1024.00 1024.00" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)" stroke="#000000" stroke-width="0.01024"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="2.048"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"></path></g></svg></span></label>
-        <div class="mega-box">
-          <div class=" md:grid md:grid-cols-4 lg:grid-cols-5 md:border-[1px] md:border-grayy md:px-[50px] py-[10px] md:py-[30px] md:text-center md:gap-x-[1.5em] text-nowrap bg-white">
+        <label htmlFor="showMega" className="mobile-item flex">Books <span className=' flexCol ml-[0.3em]'><svg className='w-[0.8em]' viewBox="0 0 1024.00 1024.00" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)" stroke="#000000" strokeWidth="0.01024"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="2.048"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"></path></g></svg></span></label>
+        <div className="mega-box">
+          <div className=" md:grid md:grid-cols-4 lg:grid-cols-5 md:border-[1px] md:border-grayy md:px-[50px] py-[10px] md:py-[30px] md:text-center md:gap-x-[1.5em] text-nowrap bg-white">
                 <li className='leading-[3em]'><a href="#">Computer Science</a></li>
                 <li className='leading-[3em]'><a href="#">Accounting</a></li>
                 <li className='leading-[3em]'><a href="#">Medical</a></li>
@@ -29,11 +29,11 @@ const CategoryBar = () => {
         </div>
       </li>
       <li>
-      <a href="#" class="desktop-item booksitem flex">Dorm essentials <span className='flexCol ml-[0.3em]'><svg className='w-[0.8em]' viewBox="0 0 1024.00 1024.00" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)" stroke="#000000" stroke-width="0.01024"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="2.048"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"></path></g></svg></span></a>
+      <a href="#" className="desktop-item booksitem flex">Dorm essentials <span className='flexCol ml-[0.3em]'><svg className='w-[0.8em]' viewBox="0 0 1024.00 1024.00" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)" stroke="#000000" strokeWidth="0.01024"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="2.048"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"></path></g></svg></span></a>
         <input type="checkbox" id="showMega"/>
-        <label for="showMega" class="mobile-item flex">Dorm essentials <span className=' flexCol ml-[0.3em]'><svg className='w-[0.8em]' viewBox="0 0 1024.00 1024.00" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)" stroke="#000000" stroke-width="0.01024"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="2.048"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"></path></g></svg></span></label>
-        <div class="mega-box">
-          <div class=" md:grid md:grid-cols-4 md:border-[1px] md:border-grayy md:px-[50px] py-[10px] md:py-[30px] md:gap-[1.5em] text-nowrap bg-white">
+        <label htmlFor="showMega" className="mobile-item flex">Dorm essentials <span className=' flexCol ml-[0.3em]'><svg className='w-[0.8em]' viewBox="0 0 1024.00 1024.00" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)" stroke="#000000" strokeWidth="0.01024"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="2.048"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"></path></g></svg></span></label>
+        <div className="mega-box">
+          <div className=" md:grid md:grid-cols-4 md:border-[1px] md:border-grayy md:px-[50px] py-[10px] md:py-[30px] md:gap-[1.5em] text-nowrap bg-white">
             <ul className=''>
                 <li className='text-[20px] font-medium leading-[2em]'>Electronics</li>
                 <li className='leading-[2em]'><a href="#">Microwaves </a></li>
@@ -61,11 +61,11 @@ const CategoryBar = () => {
         </div>
       </li>
       <li>
-      <a href="#" class="desktop-item booksitem flex">Clothing <span className='flexCol ml-[0.3em]'><svg className='w-[0.8em]' viewBox="0 0 1024.00 1024.00" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)" stroke="#000000" stroke-width="0.01024"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="2.048"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"></path></g></svg></span></a>
+      <a href="#" className="desktop-item booksitem flex">Clothing <span className='flexCol ml-[0.3em]'><svg className='w-[0.8em]' viewBox="0 0 1024.00 1024.00" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)" stroke="#000000" strokeWidth="0.01024"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="2.048"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"></path></g></svg></span></a>
         <input type="checkbox" id="showMega"/>
-        <label for="showMega" class="mobile-item flex">Books <span className=' flexCol ml-[0.3em]'><svg className='w-[0.8em]' viewBox="0 0 1024.00 1024.00" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)" stroke="#000000" stroke-width="0.01024"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="2.048"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"></path></g></svg></span></label>
-        <div class="mega-box">
-          <div class=" md:grid md:grid-cols-4 md:border-[1px] md:border-grayy md:px-[50px] py-[10px] md:py-[30px] md:gap-[1.5em] text-nowrap bg-white">
+        <label htmlFor="showMega" className="mobile-item flex">Books <span className=' flexCol ml-[0.3em]'><svg className='w-[0.8em]' viewBox="0 0 1024.00 1024.00" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)" stroke="#000000" strokeWidth="0.01024"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="2.048"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"></path></g></svg></span></label>
+        <div className="mega-box">
+          <div className=" md:grid md:grid-cols-4 md:border-[1px] md:border-grayy md:px-[50px] py-[10px] md:py-[30px] md:gap-[1.5em] text-nowrap bg-white">
             <ul className=''>
                 <li className='text-[20px]  font-medium leading-[2em]'>Men</li>
                 <li className='leading-[2em]'><a href="#">Shirts </a></li>
@@ -93,7 +93,7 @@ const CategoryBar = () => {
 
       <li><a href="#">Bikes</a></li>
     </ul>
-    <label for="menu-btn" class="btn menu-btn"><svg className='w-[2em] h-[2em]' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Menu / Hamburger_MD"> <path id="Vector" d="M5 17H19M5 12H19M5 7H19" stroke="#41004C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg></label>
+    <label htmlFor="menu-btn" className="btn menu-btn"><svg className='w-[2em] h-[2em]' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Menu / Hamburger_MD"> <path id="Vector" d="M5 17H19M5 12H19M5 7H19" stroke="#41004C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g> </g></svg></label>
     <form role="search" method="get" action="" className='md:hidden '>
   <div className="input-container">
     <input type="search" className="search-input text-[18px] block w-[40vw]" placeholder="Search" />

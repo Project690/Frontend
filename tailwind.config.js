@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Poppins"],
+        sans: ["Red Hat Display"],
         chakra: ["Chakra Petch, serif"],
       },
       colors: {

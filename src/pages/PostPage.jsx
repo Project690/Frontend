@@ -8,13 +8,13 @@ import Header from "../components/Header";
 const questionsConfig = {
   Books: [
     { key: "course", label: "What course is this book for?", moreText: "text", type: "text", important: true },
-    { key: "booktitle", label: "What's the title of the book?", moreText: "If it’s 'How to Pass Without Reading', we’re sold!", type: "text", important: true },
+    { key: "book_title", label: "What's the title of the book?", moreText: "If it’s 'How to Pass Without Reading', we’re sold!", type: "text", important: true },
     { key: "isbn", label: "Do you know the ISBN?", moreText:"It's okay if you don't. Who needs ISBNs, anyway?", type: "text", important: false },
     
   ],
   Dorms: [
     {
-      key: "itemType",
+      key: "item_type",
       label: "What is it that we're selling today?",
       moreText: "MoreText",
       type: "dropdown",
@@ -49,7 +49,7 @@ const questionsConfig = {
   ],
   Electronics: [
     {
-      key: "itemType",
+      key: "item_type",
       label: "What is it that we're selling today?",
       moreText: "",
       type: "dropdown",
@@ -62,12 +62,12 @@ const questionsConfig = {
     { key: "color", label: "What Color is this?", moreText: "I don't know who needs to know this", type: "text", conditional: (answers) => answers.itemType !== "Accessories" },
     { key: "size", label: "What's the Size?" , moreText: "", type: "text", conditional: (answers) => answers.itemType !== "Accessories" },
     { key: "storage", label: "What's the Storage?", moreText: "", type: "text", conditional: (answers) => answers.itemType !== "Accessories" },
-    { key: "modelYear", label: "Model Year", type: "text", conditional: (answers) => answers.itemType !== "Accessories" },
+    { key: "model_year", label: "Model Year", type: "text", conditional: (answers) => answers.itemType !== "Accessories" },
   ],
   Common: [
     { key: "title", label: "Title of the Ad", moreText: "This will appear in the front, keep it decent", type: "text", important: true, },
     { key: "description", label: "Additional Description", moreText: "In case you're feeling chatty today", type: "textarea" },
-    { key: "monthBought", label: "When did you buy this?", moreText: "", type: "month",important: true, },
+    { key: "month_bought", label: "When did you buy this?", moreText: "", type: "month",important: true, },
     { key: "condition", label: "What is the Condition of this?", moreText: "", type: "dropdown", options: ["New", "Good", "Fair", "Poor"], important: true, },
     { key: "price", label: "How Much?", moreText: "", type: "number", important: true, },
     { key: "pictures", label: "Upload Pictures", moreText: "No selfies please!", type: "file", important: true, },
