@@ -4,7 +4,7 @@ import Homepage from './pages/Homepage';
 import LoginPage from './pages/LoginPage';
 import PostPage from './pages/PostPage';
 import ItemPage from './pages/ItemPage'; 
-
+import CategorySearch from './pages/CategorySearch';
 import './App.css'
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
       <Route path='/Login' element={<LoginPage/>}/>
       <Route path="/Post" element={<PostPage/>}/>
       <Route path="/item/:id" element={<ItemPage />} /> 
+      <Route path="/category/*" element={<CategorySearch/>} />
 
 
       </Routes>

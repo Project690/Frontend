@@ -191,7 +191,11 @@ h2{
       transition: all 0.3s ease;
     }
     #showDrop:checked ~ .drop-menu,
-    #showMega:checked ~ .mega-box{
+    #showMega:checked ~ .mega-box,
+    #showMegaBooks:checked ~ .mega-box,
+    #showMegaDorms:checked ~ .mega-box,
+    #showMegaClothing:checked ~ .mega-box,
+    #showMegaBikes:checked ~ .mega-box{
       max-height: 100%;
     }
     .nav-links .desktop-item{

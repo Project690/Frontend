@@ -28,13 +28,13 @@ const ItemCard = ({ item }) => {
           <div className='flex justify-between items-center gap-[0.5em] text-[#B2B2B2]'>
             {/* Title with overflow handling */}
             <div className='flex-1 overflow-hidden'>
-              <p className='text-[12px] sm:text-[14px] md:text-[16px] xl:text-[18px]  whitespace-nowrap overflow-hidden text-ellipsis'>
+              <p className='text-[12px] sm:text-[14px] md:text-[16px] 2xl:text-[18px]  whitespace-nowrap overflow-hidden text-ellipsis'>
                 {item.title}
               </p>
             </div>
             {/* Time with priority on the right */}
             <div className='flex-shrink-0'>
-              <p className='text-[12px] sm:text-[14px] md:text-[16px] xl:text-[18px]  whitespace-nowrap'>
+              <p className='text-[12px] sm:text-[14px] md:text-[16px] 2xl:text-[18px]  whitespace-nowrap'>
                  {formatDate(item.date_posted)}
               </p>
             </div>

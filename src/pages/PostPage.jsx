@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import Header from "../components/Header";
 
@@ -7,7 +5,7 @@ import Header from "../components/Header";
 // A configuration object (questionsConfig) defines the questions for each category (e.g., Books, Dorms, Clothing). Each category has an array of questions with properties like key, label, type, and conditional logic for dynamic rendering.
 const questionsConfig = {
   Books: [
-    { key: "course", label: "What course is this book for?", moreText: "text", type: "text", important: true },
+    { key: "course", label: "What course is this book for?", moreText: "text",  type: "dropdown", options: ["CS", "Accounting", "Medical", "Chemistry","Physics", "Mathematics", "Economics", "Finance"], important: true },
     { key: "book_title", label: "What's the title of the book?", moreText: "If it’s 'How to Pass Without Reading', we’re sold!", type: "text", important: true },
     { key: "isbn", label: "Do you know the ISBN?", moreText:"It's okay if you don't. Who needs ISBNs, anyway?", type: "text", important: false },
     
@@ -18,13 +16,21 @@ const questionsConfig = {
       label: "What is it that we're selling today?",
       moreText: "MoreText",
       type: "dropdown",
-      options: ["Microwave", "Fridge", "Decor"],
+      options: ["Elecronics", "Decor"],
       important: true,
     },
+    {
+      key: "electronics_type",
+      label: "What is it that we're selling today?",
+      moreText: "MoreText",
+      type: "dropdown",
+      options: ["Microwave", "Fridge", "Lamp"],
+      important: true, conditional: (answers) => answers.item_type !== "Decor"
+    },
     // Conditional logic for "Decor" only showing dropdown
-    { key: "brand", label: "What’s the brand?", moreText: "No Knockoffs, Please!", type: "text", conditional: (answers) => answers.itemType !== "Decor" },
-    { key: "size", label: "How big is it?", moreText: "Size matters apparently", type: "text", conditional: (answers) => answers.itemType !== "Decor" },
-    { key: "color", label: "What color is it?" , moreText: "", type: "text", conditional: (answers) => answers.itemType !== "Decor" },
+    { key: "brand", label: "What’s the brand?", moreText: "No Knockoffs, Please!", type: "text", conditional: (answers) => answers.item_type !== "Decor" },
+    { key: "size", label: "How big is it?", moreText: "Size matters apparently", type: "text", conditional: (answers) => answers.item_type !== "Decor" },
+    { key: "color", label: "What color is it?" , moreText: "", type: "text", conditional: (answers) => answers.item_type !== "Decor" },
   ],
   Clothing: [
     { key: "gender", label: "Who's this for?", moreText: "If it's for your pet, we are still working on that", type: "dropdown", options: ["Men", "Women", "Unisex"], important: true,},
@@ -42,7 +48,7 @@ const questionsConfig = {
     { key: "color", label: "What color is this?", moreText: "", type: "text", important: true, },
   ],
   Bikes: [
-    { key: "gender", label: "Who's this bike for?", moreText: "If its for your pet, we are still working on that!", type: "dropdown", options: ["Men", "Women", "Unisex"] },
+    { key: "gender", label: "Who's this bike for?", moreText: "If its for your pet, we are still working on that!", type: "dropdown", options: ["Male", "Female", "Unisex"] },
     { key: "brand", label: "What's the Brand of this Bike?" , moreText: "Just write Walmart if you don't know", type: "text", important: false, },
     { key: "size", label: "How big is it?", moreText: "Size matters", type: "text", important: false,},
     { key: "color", label: "What Color is your Bike?", moreText: "-Andrew Tate", type: "text", important: true,},
@@ -57,12 +63,48 @@ const questionsConfig = {
       important: true,
     },
     // Conditional logic for "Accessories" showing only type dropdown and brand
-    { key: "type", label: "What Type of Accessory?", moreText: "", type: "dropdown", options: ["Cables", "Chargers", "Covers"], conditional: (answers) => answers.itemType === "Accessories" },
-    { key: "brand", label: "What Brand is this?", moreText: "Write Temu if you don't remember", type: "text", conditional: (answers) => answers.itemType !== "Decor" },
-    { key: "color", label: "What Color is this?", moreText: "I don't know who needs to know this", type: "text", conditional: (answers) => answers.itemType !== "Accessories" },
-    { key: "size", label: "What's the Size?" , moreText: "", type: "text", conditional: (answers) => answers.itemType !== "Accessories" },
-    { key: "storage", label: "What's the Storage?", moreText: "", type: "text", conditional: (answers) => answers.itemType !== "Accessories" },
-    { key: "model_year", label: "Model Year", type: "text", conditional: (answers) => answers.itemType !== "Accessories" },
+    { 
+      key: "accesssory_type", 
+      label: "What Type of Accessory?", 
+      moreText: "", 
+      type: "dropdown", 
+      options: ["Cables", "Chargers", "Covers"], 
+      conditional: (answers) => answers.item_type === "Accessories" 
+    },
+    { 
+      key: "brand", 
+      label: "What Brand is this?", 
+      moreText: "Write Temu if you don't remember", 
+      type: "text", 
+      conditional: (answers) => answers.item_type !== "Decor" 
+    },
+    { 
+      key: "color", 
+      label: "What Color is this?", 
+      moreText: "I don't know who needs to know this", 
+      type: "text", 
+      conditional: (answers) => answers.item_type !== "Accessories" 
+    },
+    { 
+      key: "size", 
+      label: "What's the Size?", 
+      moreText: "", 
+      type: "text", 
+      conditional: (answers) => answers.item_type !== "Accessories" 
+    },
+    { 
+      key: "storage", 
+      label: "What's the Storage?", 
+      moreText: "", 
+      type: "text", 
+      conditional: (answers) => answers.item_type !== "Accessories" 
+    },
+    { 
+      key: "model_year", 
+      label: "Model Year", 
+      type: "text", 
+      conditional: (answers) => answers.item_type !== "Accessories" 
+    },
   ],
   Common: [
     { key: "title", label: "Title of the Ad", moreText: "This will appear in the front, keep it decent", type: "text", important: true, },
@@ -114,15 +156,16 @@ const PostPage = () => {
 
    //Filters questions based on the selected category and conditional logic, appending common questions to the list.
 
-  const getQuestions = () => {
+   const getQuestions = () => {
     if (!category) return [];
     const baseQuestions = questionsConfig[category];
     const filteredQuestions = baseQuestions.filter(
-      (question) => !question.conditional || question.conditional(answers)
+      (question) => 
+        !question.conditional || 
+        (question.conditional && question.conditional(answers))
     );
     return [...filteredQuestions, ...questionsConfig.Common];
   };
-
 
   // Dynamically renders the current question based on its type (text, dropdown, file, month, textarea). Handles file upload previews and conditional rendering.
   const renderCurrentQuestion = () => {
@@ -273,9 +316,49 @@ Select Image
 
     setCurrentQuestionIndex(newIndex);
   };
-
+  const generateSearchKeywords = (category, answers) => {
+    let keywords = [category]; // Always include the base category
+  
+    switch (category) {
+      case "Clothing":
+        if (answers.gender) keywords.push(`${category}/${answers.gender}`);
+        if (answers.type) keywords.push(`${category}/${answers.gender}/${answers.type}`);
+        break;
+  
+      case "Dorms":
+        if (answers.item_type) keywords.push(`${category}/${answers.item_type}`);
+        if (answers.electronics_type) keywords.push(`${category}/${answers.item_type}/${answers.electronics_type}`);
+        break;
+  
+      case "Books":
+        if (answers.course) keywords.push(`${category}/${answers.course}`);
+        break;
+  
+      case "Bikes":
+        if (answers.gender) keywords.push(`${category}/${answers.gender}`);
+        break;
+  
+      case "Electronics":
+        if (answers.item_type) keywords.push(`${category}/${answers.item_type}`);
+        if (answers.accesssory_type) keywords.push(`${category}/${answers.item_type}/${answers.accesssory_type}`);
+        break;
+  
+      default:
+        break;
+    }
+  
+    return keywords.join(", "); // Convert array to comma-separated string
+  };
   const handleSubmit = () => {
-    console.log("Submitted Data:", { category, ...answers, pictures: answers.pictures });
+    const searchKeywords = generateSearchKeywords(category, answers);
+    const submittedData = {
+      category,
+      ...answers,
+      pictures: answers.pictures,
+      searchKeywords, // Add search keywords to the submitted data
+    };
+  
+    console.log("Submitted Data:", submittedData);
     alert("Form Submitted!");
   };
 
