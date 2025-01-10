@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 
 const Signup = () => {
   const [step, setStep] = useState(1);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isFormDisappearing, setIsFormDisappearing] = useState(false);
+
+
   const [formData, setFormData] = useState({
     collegeName: '',
     email: '',
@@ -39,16 +43,23 @@ const Signup = () => {
   
   
 // handleSubmit: Prevents the default form submission behavior and logs the formData to the console. In a real-world scenario, this would send the data to a backend server.
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form Data Submitted:', formData);
-  };
-
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log('Form Data Submitted:', formData);
+  setIsFormDisappearing(true); // Trigger form disappearance animation
+    // Wait for the form disappearance animation to complete
+    setTimeout(() => {
+      setIsSubmitted(true); // Show full-screen message
+    }, 500); 
+    
+};
   return (
     <div className='LoginPage signup-flex'>
       <h2 className='text-[22px] sm:text-[24px] md:text-[28px] lg:text-[30px] font-semibold'>Signup</h2>
-      <form onSubmit={handleSubmit} className='signupform'>
-      <div className={`stepdiv ${step === 1 ? 'step-enter-active' : 'step-exit-active'}`}>
+      {!isSubmitted && (
+      <form onSubmit={handleSubmit} className={`signupform ${isFormDisappearing ? 'form-disappear' : ''}`}>
+
+     { <><div className={`stepdiv ${step === 1 ? 'step-enter-active' : 'step-exit-active'}`}>
 
         {step === 1 && (
           <div>
@@ -153,8 +164,18 @@ const Signup = () => {
           )}
           {step === 3 && <button type="submit" className='solidBtn'>Submit</button>}
         </div>
+        </>  }
       </form>
+      )}
+      {isSubmitted && (
+        <div className={`submission-message w-[50vw] h-full ${isSubmitted ? 'visible' : ''}`}>
+          <h2 className="text-primary text-center text-[24px] sm:text-[26px] md:text-[30px] lg:text-[44px]">You made it!</h2><br/>
+          <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px]">We are Proud of you :)</p><br/>
+          <a href="/" className="solidBtn">Go to HomePage</a>
+        </div>
+      )}
     </div>
+    
   );
 };
 

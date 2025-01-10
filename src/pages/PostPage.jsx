@@ -107,12 +107,12 @@ const questionsConfig = {
     },
   ],
   Common: [
-    { key: "title", label: "Title of the Ad", moreText: "This will appear in the front, keep it decent", type: "text", important: true, },
+    { key: "title", label: "Title of the Ad", moreText: "This will appear in the front, keep it decent", type: "text", important: false, },
     { key: "description", label: "Additional Description", moreText: "In case you're feeling chatty today", type: "textarea" },
-    { key: "month_bought", label: "When did you buy this?", moreText: "", type: "month",important: true, },
-    { key: "condition", label: "What is the Condition of this?", moreText: "", type: "dropdown", options: ["New", "Good", "Fair", "Poor"], important: true, },
-    { key: "price", label: "How Much?", moreText: "", type: "number", important: true, },
-    { key: "pictures", label: "Upload Pictures", moreText: "No selfies please!", type: "file", important: true, },
+    { key: "month_bought", label: "When did you buy this?", moreText: "", type: "month",important: false, },
+    { key: "condition", label: "What is the Condition of this?", moreText: "", type: "dropdown", options: ["New", "Good", "Fair", "Poor"], important: false, },
+    { key: "price", label: "How Much?", moreText: "", type: "number", important: false, },
+    { key: "pictures", label: "Upload Pictures", moreText: "No selfies please!", type: "file", important: false, },
   ],
 };
 
@@ -121,8 +121,8 @@ const PostPage = () => {
   const [category, setCategory] = useState("");
   const [answers, setAnswers] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isFormDisappearing, setIsFormDisappearing] = useState(false);
 // Updates the selected category and resets the answers and question index when the category changes.
 
   const handleCategoryChange = (e) => {
@@ -355,11 +355,18 @@ Select Image
       category,
       ...answers,
       pictures: answers.pictures,
-      searchKeywords, // Add search keywords to the submitted data
+      searchKeywords,
     };
   
     console.log("Submitted Data:", submittedData);
-    alert("Form Submitted!");
+  
+    // Set submission status to true
+    setIsFormDisappearing(true); // Trigger form disappearance animation
+
+  // Wait for the form disappearance animation to complete
+  setTimeout(() => {
+    setIsSubmitted(true); // Show full-screen message
+  }, 500); 
   };
 
   const questions = getQuestions();
@@ -369,9 +376,10 @@ Select Image
         <Header/>
 
     <div className="post-page py-[10vh] ">
+    {!isSubmitted && (
+    <div className={`postForm px-[9vw] md:px-[7vw] py-[5vh] md:py-[10vh] rounded-[15px] md:rounded-[20px] ${isFormDisappearing ? 'form-disappear' : ''}`}>
     <h2 className="font-semibold pb-[1em] text-center">Post an Item</h2>
 
-    <div className="postForm px-[9vw] md:px-[7vw] py-[5vh] md:py-[10vh] rounded-[15px] md:rounded-[20px]">
       {!category && (
         <div className="form-group">
           <label className="text-[20px] font-medium md:text-[24px] lg:text-[26px]">Select a Category</label>
@@ -498,13 +506,23 @@ Select Image
         Wanna go back?
       </button>
       <button onClick={handleSubmit} className="solidBtn">Looks Good</button>
+      </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Full-Screen Submission Message */}
+      {isSubmitted && (
+        <div className={`submission-message w-full h-full ${isSubmitted ? 'visible' : ''}`}>
+          <h2 className="text-primary text-center text-[24px] sm:text-[26px] md:text-[30px] lg:text-[44px]">You made it!</h2><br/>
+          <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px]">We are Proud of you :)</p><br/>
+          <a href="/" className="solidBtn">Go to HomePage</a>
+        </div>
+      )}
     </div>
-  </div>
-)}
-    </div>
-    </div>
-    </>
-  );
+  </>
+);
 };
 
 export default PostPage;

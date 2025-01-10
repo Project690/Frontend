@@ -18,14 +18,14 @@ const CategoryBar = () => {
         <label htmlFor="showMegaBooks" className="mobile-item flex">Books <span className=' flexCol ml-[0.3em]'><svg className='w-[0.8em]' viewBox="0 0 1024.00 1024.00" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(90)" stroke="#000000" strokeWidth="0.01024"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="2.048"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"></path></g></svg></span></label>
         <div className="mega-box">
           <ul className=" md:grid md:grid-cols-4 lg:grid-cols-5 md:border-[1px] md:border-grayy md:px-[50px] py-[10px] md:py-[30px] md:gap-x-[1.5em] text-nowrap bg-white">
-            <li><Link to="/category/Books/Computer Science">Computer Science</Link></li>
-            <li><Link to="/category/Books/Mathematics">Mathematics</Link></li>
-            <li><Link to="/category/Books/Accounting">Accounting</Link></li>
-            <li><Link to="/category/Books/Medical">Medical</Link></li>
-            <li><Link to="/category/Books/Chemistry">Chemistry</Link></li>
-            <li><Link to="/category/Books/Physics">Physics</Link></li>
-            <li><Link to="/category/Books/Economics">Economics</Link></li>
-            <li><Link to="/category/Books/Finance">Finance</Link></li>
+            <li className='leading-[2em]'><Link to="/category/Books/Computer Science">Computer Science</Link></li>
+            <li className='leading-[2em]'><Link to="/category/Books/Mathematics">Mathematics</Link></li>
+            <li className='leading-[2em]'><Link to="/category/Books/Accounting">Accounting</Link></li>
+            <li className='leading-[2em]'><Link to="/category/Books/Medical">Medical</Link></li>
+            <li className='leading-[2em]'><Link to="/category/Books/Chemistry">Chemistry</Link></li>
+            <li className='leading-[2em]'><Link to="/category/Books/Physics">Physics</Link></li>
+            <li className='leading-[2em]'><Link to="/category/Books/Economics">Economics</Link></li>
+            <li className='leading-[2em]'><Link to="/category/Books/Finance">Finance</Link></li>
           </ul>
         </div>
       </li>
