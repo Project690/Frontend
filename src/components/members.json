@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "name": "Dan Martin",
+        "age": 32,
+        "graduationMonth": "05/2027",
+        "profilePic": "/ItemPic.png",
+        "gender": "Male",
+        "memberSince": "29/12/2023",
+        "rating": 4.5
+    },
+    {
+        "id": 2,
+        "name": "Ron Martini",
+        "age": 22,
+        "graduationMonth": "05/2026",
+        "profilePic": "/ItemPic.png",
+        "gender": "Male",
+        "memberSince": "12/12/2023",
+        "rating": 4
+
+    }
+
+]

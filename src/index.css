@@ -519,3 +519,58 @@ input[type=number]{
 .submission-message.visible {
   animation: messageAppear 0.3s ease-in ;
 }
+
+
+.swiper-button-prev:after, .swiper-button-next:after {
+
+  text-transform: none !important;
+  letter-spacing: 0;
+  font-variant: initial;
+  line-height: 1;
+  font-size: 33px !important;
+  font-weight: 900;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: #75008a;
+  color: #75008a;
+}
+.swiper-pagination-bullet{
+  height: 15px !important;
+  width: 15px !important;
+  background-color: white !important;
+  opacity: 1 !important;
+}
+.swiper-pagination-bullet-active{
+  background-color: #75008a !important;
+
+  border: 2px solid #fff;
+}
+@media screen and (max-width: 640px) {
+  .swiper-button-prev:after, .swiper-button-next:after {
+
+
+    font-size: 20px !important;
+    font-weight: 900;
+    -webkit-text-stroke-width: 2px;
+    color: #75008a;
+  }
+  .swiper-pagination-bullet{
+    height: 10px !important;
+    width: 10px !important;
+    background-color: white !important;
+    opacity: 1 !important;
+  }
+  .swiper-pagination-bullet-active{
+    background-color: #75008a !important;
+
+    border: 1px solid #fff;
+  }
+}
+
+
+.infoBlock{
+  @apply bg-[#fff] rounded-[15px] border-[1px] border-[#F0F0F0] px-[5vw] py-[4vw] sm:px-[3vw] sm:py-[2vw];
+  /* Rectangle 34 */
+
+  box-shadow: 0px 0px 6px 1px #CFCFCF;
+
+}

@@ -11,9 +11,10 @@
       "condition": "Good",
       "price": 50,
       "negotiable": true,
-      "pictures": ["/ItemPic.png"],
+      "pictures": ["/ItemPic.png", "/image.png"],
       "searchKeywords": "Books, Books/Computer Science",
-      "date_posted": "2023-10-10"
+      "date_posted": "2023-10-10",
+      "sellerId": 1
 
     },
     {
@@ -32,7 +33,8 @@
       "negotiable": false,
       "pictures": ["/ItemPic.png"],
       "searchKeywords": "Dorms, Dorms/Electronics, Dorms/Electronics/Microwave",
-      "date_posted": "2023-10-10"
+      "date_posted": "2023-10-10",
+      "sellerId": 2
 
     },
     {
@@ -51,7 +53,8 @@
       "negotiable": true,
       "pictures": ["/ItemPic.png"],
       "searchKeywords": "Clothing, Clothing/Men, Clothing/Men/Shirt",
-      "date_posted": "2023-10-10"
+      "date_posted": "2023-10-10",
+      "sellerId": 1
 
     },
     {
@@ -69,7 +72,8 @@
       "negotiable": true,
       "pictures": ["/ItemPic.png"],
       "searchKeywords": "Bikes, Bikes/Unisex",
-      "date_posted": "2023-10-10"
+      "date_posted": "2023-10-10",
+      "sellerId": 1
 
     },
     {
@@ -89,7 +93,8 @@
       "negotiable": false,
       "pictures": ["/ItemPic.png"],
       "searchKeywords": "Electronics, Electronics/Phone",
-      "date_posted": "2023-10-10"
+      "date_posted": "2023-10-10",
+      "sellerId": 2
 
     },
     {
@@ -106,7 +111,8 @@
       "negotiable": true,
       "pictures": ["/ItemPic.png"],
       "searchKeywords": "Books, Books/Mathematics",
-      "date_posted": "2023-10-10"
+      "date_posted": "2023-10-10",
+      "sellerId": 1
 
     },
     {
@@ -121,7 +127,8 @@
       "negotiable": false,
       "pictures": ["/ItemPic.png"],
       "searchKeywords": "Dorms, Dorms/Decor",
-      "date_posted": "2023-10-10"
+      "date_posted": "2023-10-10",
+      "sellerId": 2
 
     },
     {
@@ -140,7 +147,8 @@
       "negotiable": true,
       "pictures": ["/ItemPic.png"],
       "searchKeywords": "Clothing, Clothing/Women, Clothing/Women/Shoes",
-      "date_posted": "2023-10-10"
+      "date_posted": "2023-10-10",
+      "sellerId": 1
 
     },
     {
@@ -158,7 +166,8 @@
       "negotiable": false,
       "pictures": ["/ItemPic.png"],
       "searchKeywords": "Bikes, Bikes/Men",
-      "date_posted": "2023-10-10"
+      "date_posted": "2023-10-10",
+      "sellerId": 2
 
     },
     {
@@ -175,7 +184,8 @@
       "negotiable": true,
       "pictures": ["/ItemPic.png"],
       "searchKeywords": "Electronics, Electronics/Accessories, Electronics/Accessories/Cables",
-      "date_posted": "2023-10-10"
+      "date_posted": "2023-10-10",
+      "sellerId": 2
 
     }
   ]

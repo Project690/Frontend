@@ -168,10 +168,10 @@ const handleSubmit = (e) => {
       </form>
       )}
       {isSubmitted && (
-        <div className={`submission-message w-[50vw] h-full ${isSubmitted ? 'visible' : ''}`}>
+        <div className={`submission-message md:w-[50vw] w-full h-full ${isSubmitted ? 'visible' : ''}`}>
           <h2 className="text-primary text-center text-[24px] sm:text-[26px] md:text-[30px] lg:text-[44px]">You made it!</h2><br/>
           <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px]">We are Proud of you :)</p><br/>
-          <a href="/" className="solidBtn">Go to HomePage</a>
+          <a href="/Login" className="solidBtn">Login</a>
         </div>
       )}
     </div>
