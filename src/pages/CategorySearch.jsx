@@ -22,7 +22,7 @@ const CategorySearch = () => {
     "Dorms": "Dorm Essentials",
     "Dorms/Electronics": "Dorm Electronics",
  "Dorms/Electronics/Microwave": "Microwaves",
- "Dorms/Electronics/Microwave": "Refrigerators",
+ "Dorms/Electronics/Refrigerator": "Refrigerators",
     "Dorms/Decor": "Dorm Decor",
     "Clothing": "Clothing",
     "Clothing/Men": "Men's Clothing",
@@ -73,11 +73,13 @@ const CategorySearch = () => {
       <h2 className="px-[5vw] md:px-[10vw] text-[24px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-medium pt-[70px]">
         Showing Results For: {displayName}
       </h2>
+      <div className='w-[90vw] md:w-[80vw] mx-auto'>
       {filteredItems.length > 0 ? (
-        <ItemsContainer items={filteredItems} /> // Pass filtered items to ItemsContainer
+        <ItemsContainer items={filteredItems} gridCols="4"/> // Pass filtered items to ItemsContainer
       ) : (
         <p className="px-[5vw] md:px-[10vw]">No items found for this category.</p> // Message for no items found
       )}
+      </div>
     </div>
   );
 };

@@ -60,7 +60,6 @@ const Header = () => {
     <div className='px-[20px] sm:px-[30px] py-[20px] profileList'>
     <ul className=' text-[16px] sm:text-[18px] font-light'>
       <li className='leading-[2em]'><a className=''>Chats</a></li>
-      <li className='leading-[2em]'><a className=''>My Ads</a></li>
       <li className='leading-[2em]'><a className=''>Settings</a></li>
       <li className='leading-[2em]'><a className=''>Help</a></li>
 

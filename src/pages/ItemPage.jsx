@@ -8,6 +8,7 @@ import 'swiper/css';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { Link } from 'react-router-dom';
 
 const ItemPage = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const ItemPage = () => {
   const seller = members.find(member => member.id === item.sellerId);
   const [fullScreenImage, setFullScreenImage] = useState(null);
 
-  const filteredKeys = Object.keys(item).filter(key => key !== 'id' && key !== 'pictures' && key !== 'sellerId');
+  const filteredKeys = Object.keys(item).filter(key => key !== 'id' && key !== 'pictures' && key !== 'sellerId' && key !== 'searchKeywords' && key !== 'datePosted' && key !== 'negotiable' && key !== 'price' && key !== 'title' && key !== 'itemType' && key !== 'electronicsType');
 
   const handleImageClick = (image) => {
     setFullScreenImage(image);
@@ -92,21 +93,23 @@ const ItemPage = () => {
 
       <div className='DescriptionBlocks py-[3vw]'>
         <div className='flex w-[80vw] md:w-[68vw] mx-auto justify-between gap-[2vw] md:gap-[1vw]'>
-          <div className='infoBlock w-full  w-full'> 
+          <div className='infoBlock  w-full'> 
             <h2 className='font-bold text-primary text-[18px] sm:text-[24px] md:text-[30px] lg:text-[36px]'>{item.title}</h2>
-            <p className='text-[14px] sm:text-[16px] md:text-[20px]'>Posted On:  {item.date_posted}</p>
+            <p className='text-[14px] sm:text-[16px] md:text-[20px]'>Posted On:  {item.datePosted}</p>
           </div>
           <div className='infoBlock '> 
             <div className='flexCol h-full'>
-              <h2 className='flex text-nowrap font-bold text-[26px] sm:text-[30px] lg:text-[36px] xl:text-[44px]'>$ {item.price}</h2>
-              {item.negotiable && (<p className='text-[14px] sm:text-[16px] lg:text-[18px] font-light text-grayy'>(Flexible)</p>)}
+              <h2 className='flex text-nowrap font-bold text-[26px] sm:text-[30px] lg:text-[36px] xl:text-[44px]'>$ {item.price}
+              {item.negotiable && (<span className='ml-[0.5em] flexCol text-[14px] sm:text-[16px] lg:text-[18px] font-light text-grayy'>(Flexible)</span>)}
+              </h2>
+              
             </div>
           </div>
         </div>
 
         <div className='sm:flex w-[80vw] md:w-[68vw] mx-auto justify-between gap-[2vw] md:gap-[1vw] mt-[2vw] md:mt-[1vw]'>
           <div className='infoBlock w-full h-fit'> 
-            <h2 className='font-bold text-[18px] sm:text-[24px] md:text-[30px] lg:text-[36px'>Description</h2>
+            <h2 className='font-bold text-[18px] sm:text-[24px] md:text-[30px]'>Description</h2>
             <div className=''>
               {filteredKeys.map(key => (
                 <p key={key}><span className='font-semibold text-[14px] sm:text-[16px] sm:text-[20px] '>
@@ -117,7 +120,7 @@ const ItemPage = () => {
           </div>
 
           <div className='infoBlock mt-[2vw] sm:mt-0 h-fit'> 
-            <h2 className='font-medium text-center'>About Seller</h2>
+            <h2 className='font-bold text-center text-[18px] sm:text-[24px] md:text-[30px]'>About Seller</h2>
             <div className='flex gap-[1em] mt-[1em] justify-left'>
               <div className='w-[100px] aspect-square rounded-[50%] border-[1px] border-grayy bg-[#FAFAFA] overflow-hidden'> 
                 <img src={seller.ProfilePic} className='w-full h-full'></ img>
@@ -129,7 +132,11 @@ const ItemPage = () => {
             </div>
             <p className='mt-[1em]  text-[16px] md:text-[18px] text-nowrap'><span className='font-semibold'>Member Since:</span> {seller.memberSince}</p>
             <p className=' text-[16px] md:text-[18px] text-nowrap'><span className='font-semibold'>Seller Rating:</span> {seller.rating}/5</p>
-            <a className='mt-[1em] text-center solidBtn block'>Contact</a>
+            <Link to={`/members/${seller.id}`}>
+            <p className='mt-[1em] text-center notSolidBtn block'>View Profile</p>
+
+            </Link>
+            <a className='mt-[0.3em] text-center solidBtn block'>Contact</a>
           </div>
         </div>
       </div>

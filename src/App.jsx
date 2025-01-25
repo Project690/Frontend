@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import PostPage from './pages/PostPage';
 import ItemPage from './pages/ItemPage'; 
 import CategorySearch from './pages/CategorySearch';
+import ProfilePage from './pages/ProfilePage';
 import './App.css'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route path='/Login' element={<LoginPage/>}/>
       <Route path="/Post" element={<PostPage/>}/>
       <Route path="/item/:id" element={<ItemPage />} /> 
+      <Route path="/members/:id" element={<ProfilePage />} />
       <Route path="/category/*" element={<CategorySearch/>} />
 
 

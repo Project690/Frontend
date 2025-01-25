@@ -18,7 +18,9 @@ h2{
     flex-direction: column;
     justify-content: center;
 }
-
+.x-container{
+ @apply w-[90%] md:w-4/5 mx-auto;
+}
 .input-container {
     display: flex;
   }
@@ -316,10 +318,10 @@ h2{
   @apply outline-none border-[#75008a] border-[2px];
 }
 .solidBtn{
-  @apply bg-primary text-white py-[0.3em] px-[1em] text-[18px] md:text-[20px] lg:text-[22px] border-[2px] border-[#41004C];
+  @apply bg-primary text-white py-[0.2em] px-[1em] text-[18px] sm:text-[16px] md:text-[18px] lg:text-[20px] border-[2px] border-[#5a006a];
 }
 .notSolidBtn{
-  @apply text-[#41004C] py-[0.3em] px-[1em] text-[18px] md:text-[20px] lg:text-[22px] border-[2px] border-[#41004C];
+  @apply text-[#41004C] py-[0.2em] px-[1em] text-[18px] sm:text-[16px] md:text-[18px] lg:text-[20px] border-[2px] border-[#5a006a];
 }
 
 .loginform label, .loginform input{
@@ -530,8 +532,8 @@ input[type=number]{
   font-size: 33px !important;
   font-weight: 900;
   -webkit-text-stroke-width: 3px;
-  -webkit-text-stroke-color: #75008a;
-  color: #75008a;
+  -webkit-text-stroke-color: #5a006a;
+  color: #5a006a;
 }
 .swiper-pagination-bullet{
   height: 15px !important;
@@ -540,7 +542,7 @@ input[type=number]{
   opacity: 1 !important;
 }
 .swiper-pagination-bullet-active{
-  background-color: #75008a !important;
+  background-color: #5a006a !important;
 
   border: 2px solid #fff;
 }
@@ -551,7 +553,7 @@ input[type=number]{
     font-size: 20px !important;
     font-weight: 900;
     -webkit-text-stroke-width: 2px;
-    color: #75008a;
+    color: #5a006a;
   }
   .swiper-pagination-bullet{
     height: 10px !important;
@@ -560,7 +562,7 @@ input[type=number]{
     opacity: 1 !important;
   }
   .swiper-pagination-bullet-active{
-    background-color: #75008a !important;
+    background-color: #5a006a !important;
 
     border: 1px solid #fff;
   }
@@ -573,4 +575,15 @@ input[type=number]{
 
   box-shadow: 0px 0px 6px 1px #CFCFCF;
 
+}
+
+
+.score {
+    display: block;
+    max-width: 5em;
+    height: 1em;
+    font-size: 30px;
+    background: #eee;
+    background: linear-gradient( 90deg, #5a006a var( --_score, 50% ), #eee 0 );
+    mask: url( 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" ><path fill="%23000" d="M16 2 L20 12 30 12 22 19 25 30 16 23 7 30 10 19 2 12 12 12 Z"/></svg>' ) 0 0/1em 1em;
 }

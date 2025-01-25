@@ -35,7 +35,7 @@ const ItemCard = ({ item }) => {
             {/* Time with priority on the right */}
             <div className='flex-shrink-0'>
               <p className='text-[12px] sm:text-[14px] md:text-[16px] 2xl:text-[18px]  whitespace-nowrap'>
-                 {formatDate(item.date_posted)}
+                 {formatDate(item.datePosted)}
               </p>
             </div>
           </div>

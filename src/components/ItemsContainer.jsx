@@ -1,9 +1,13 @@
 import React from 'react';
 import ItemCard from './ItemCard';
 
-const ItemsContainer = ({ items }) => {
+const ItemsContainer = ({ items, gridCols }) => {
+  const gridClasses = {
+    "3": "grid-cols-2 md:grid-cols-3 lg:grid-cols-3",
+    "4": "grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
+  };
   return (
-    <div className="w-[90%] md:w-4/5 mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[2vw] md:gap-[1vw] py-[80px]">
+    <div className={` grid gap-[2vw] md:gap-[1vw] py-[50px] ${gridClasses[gridCols]}`}>
       {items.map((item) => (
         <ItemCard key={item.id} item={item} />
       ))}
@@ -12,3 +16,5 @@ const ItemsContainer = ({ items }) => {
 };
 
 export default ItemsContainer;
+
+// 

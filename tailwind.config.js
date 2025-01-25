@@ -11,7 +11,7 @@ export default {
         chakra: ["Chakra Petch, serif"],
       },
       colors: {
-        primary: '#41004C', // Example: Blue
+        primary: '#5a006a', // Example: Blue
         grayy: '#CFCFCF',
         
         // Add more custom colors as needed

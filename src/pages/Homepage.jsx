@@ -10,9 +10,9 @@ const Homepage = () => {
       <Header />
       <CategoryBar />
       <Banner />
-      
-      <ItemsContainer items={db} /> 
-    
+      <div className='w-[90vw] md:w-[80vw] mx-auto'>
+        <ItemsContainer items={db} gridCols="4"/> 
+      </div>
     
     </div>
   )
